@@ -1,4 +1,5 @@
 object Demo extends App {
-  println("Hello World")
-
+  class Amount(value: Double, currency: String)
+  val twoDollars = new Amount(2,"USD")
+  println(twoDollars) // prints Demo$Amount@13c27452
 }
