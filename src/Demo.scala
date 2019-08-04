@@ -1,18 +1,11 @@
 object Demo extends App {
-  class Amount(val value: Double,val currency: String){
-    override def toString: String = s"Amount($value,$currency)"
-  }
+  // companion object is directly available
+  // methods like apply, equals, toString, unapply, copy, hashcode available
+  // pattern matching
+  case class Amount(value: Double,currency: String)
 
-  // companion object
-  object Amount{
-    def apply(value: Double, currency : String): Amount = new Amount(value,currency)
-    def apply(value: Double): Amount = new Amount(value,"USD")
-  }
-
-  val twoDollars = new Amount(2,"USD")
-  val twoUSDollars = Amount(2)
+  val twoDollars = Amount(2,"USD")
 
   println(twoDollars)
-  println(twoUSDollars)
 
 }
