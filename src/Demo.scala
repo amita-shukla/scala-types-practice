@@ -1,14 +1,21 @@
 object Demo extends App {
   class Amount(val value: Double,val currency: String){
-//    val amountValue = this.value
-//    val amountCurrency = this.currency
     override def toString: String = s"Amount($value,$currency)"
   }
-  val twoDollars = new Amount(2,"USD")
-//  println(twoDollars.amountValue)
-//  println(twoDollars.amountCurrency)
 
-  // the parameters are accessible on addding val keyword in class
-  println(twoDollars.value)
-  println(twoDollars.currency)
+  // object creates a singleton object for utility methods
+  // these methods need not be instantiated everytime you create an amount instance
+  object AmountUtils {
+    def convert(from: Amount, to:String): Amount = {
+      val conversionRate = 69.45
+      new Amount(from.value* conversionRate, to)
+    }
+  }
+
+  import AmountUtils._
+  val twoDollars = new Amount(2,"USD")
+//  val twoDollarsEqINR = AmountUtils.convert(twoDollars,"INR")
+  val twoDollarsEqINR = convert(twoDollars,"INR")
+  println(twoDollarsEqINR)
+
 }
